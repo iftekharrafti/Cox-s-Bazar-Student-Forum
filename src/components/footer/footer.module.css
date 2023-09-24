@@ -1,0 +1,43 @@
+.footer {
+  background-color: #000000;
+  color: #777;
+  padding: 60px 0;
+}
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #cfb7b7;
+}
+.footerItems {
+  list-style-type: none;
+}
+.footerIcon {
+  margin-right: 10px;
+  font-size: 20px;
+}
+.footerLink {
+  color: #777;
+  text-decoration: none;
+}
+.footerLink:hover span {
+  color: #604dcc;
+}
+.footerSocialIcons {
+  display: flex;
+}
+.footerSocialIcon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.ancovaLogo{
+    width: 130px;
+    height: auto;
+    object-fit: cover;
+}
