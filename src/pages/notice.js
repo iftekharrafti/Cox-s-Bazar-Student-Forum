@@ -29,7 +29,7 @@ export default function Advisor() {
             </div>
             {/* Notice Details */}
             <Container className="mt-4">
-              <Row>
+              <Row className="mb-4">
                 {data?.data.map((item) => (
                   <NoticeCard key={item.serial} item={item} />
                 ))}

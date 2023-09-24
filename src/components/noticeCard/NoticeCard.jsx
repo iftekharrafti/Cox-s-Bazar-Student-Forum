@@ -23,7 +23,7 @@ const NoticeCard = ({ item }) => {
         </Link>
         <p className={Style.text}>{item?.text.slice(0, 200)}.....</p>
         <Link href={`/notice/${item.id}`}>
-          <Button>বিস্তারিত দেখুন</Button>
+          <Button className={Style.button}>বিস্তারিত দেখুন</Button>
         </Link>
       </div>
     </Col>
