@@ -20,7 +20,7 @@ const QuickViewModal = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div className="d-flex flex-direction-column align-items-center">
+        <div className="d-flex flex-column align-items-center">
           <div className="mb-3">
           <Img
             src={baseImgUrl + props?.item?.image}
