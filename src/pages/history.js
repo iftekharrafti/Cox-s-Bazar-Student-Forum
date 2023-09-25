@@ -30,7 +30,7 @@ export default function Advisor() {
             <Container className="mb-5">
               <Row>
                 <Col md={10} sm={12} className="mx-auto">
-                    <p style={{lineHeight: 1.7}}>{data?.data[0]?.dureg}</p>
+                    <p style={{lineHeight: 1.7, fontFamily: 'Poppins'}}>{data?.data[0]?.dureg}</p>
                 </Col>
               </Row>
             </Container>
