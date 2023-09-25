@@ -48,7 +48,7 @@ const HeaderMenu = () => {
             <Link href="/registration">রেজিস্ট্রেশন</Link>
           </Nav>
           <Nav>
-            <Link href="/executive">সদস্য আবেদন</Link>
+            <Link href="/application">সদস্য আবেদন</Link>
           </Nav>
         </Nav>
       </Container>

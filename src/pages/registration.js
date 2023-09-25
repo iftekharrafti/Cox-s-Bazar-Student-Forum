@@ -60,7 +60,7 @@ export default function Advisor() {
                         {...register("name", { required: true })}
                         placeholder="Contact Person"
                       />
-                      {errors.name && <span>Contact Person is required</span>}
+                      {errors.name && <span className="text-danger">Contact Person is required</span>}
                     </Form.Group>
                     <Form.Group
                       className={`${Style.institute} mb-3`}
@@ -75,7 +75,7 @@ export default function Advisor() {
                         {...register("custom1", { required: true })}
                         placeholder="Institute/Organization"
                       />
-                      {errors.custom1 && <span>Institute/Organization is required</span>}
+                      {errors.custom1 && <span className="text-danger">Institute/Organization is required</span>}
                     </Form.Group>
                   </div>
                   <div className={`${Style.contactInstitute} mb-4`}>
@@ -92,7 +92,7 @@ export default function Advisor() {
                         {...register("phone", { required: true })}
                         placeholder="Phone Number"
                       />
-                      {errors.phone && <span>Phone Number is required</span>}
+                      {errors.phone && <span className="text-danger">Phone Number is required</span>}
                     </Form.Group>
                     <Form.Group
                       className={`${Style.institute} mb-3`}
@@ -107,7 +107,7 @@ export default function Advisor() {
                         {...register("custom2", { required: true })}
                         placeholder="E-mail"
                       />
-                      {errors.custom2 && <span>E-mail is required</span>}
+                      {errors.custom2 && <span className="text-danger">E-mail is required</span>}
                     </Form.Group>
                   </div>
                   <h6 className={Style.stallSizeTitle}>Stall Size :</h6>

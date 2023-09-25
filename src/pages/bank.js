@@ -27,10 +27,10 @@ export default function Bank() {
               <h3 class="headerTitleMain">ব্যাংক একাউন্ট</h3>
             </div>
             {/* Alumni Details */}
-            <Container className="mt-4">
+            <Container className="mt-4 mb-5">
               <Row>
               <Col md={10} sm={12} className="mx-auto">
-                    <p>{data?.data[0]?.dureg}</p>
+                    <p dangerouslySetInnerHTML={{ __html: data?.data[0]?.dureg }} />
                 </Col>
               </Row>
             </Container>
