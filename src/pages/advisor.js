@@ -26,7 +26,7 @@ export default function Advisor() {
             <div className="headerTitle">
               <h3 class="headerTitleMain">উপদেষ্টামন্ডলী</h3>
             </div>
-            {/* Alumni Details */}
+            {/* Advisor Details */}
             <Container className="mt-4">
               <Row>
                 {data?.data.map((item) => (

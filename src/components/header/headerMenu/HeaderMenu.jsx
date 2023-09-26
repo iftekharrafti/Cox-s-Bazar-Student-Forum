@@ -1,29 +1,45 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Style from "./headerMenu.module.css";
+import { useRouter } from "next/router";
+import useFetch from "@/hooks/useFetch";
 
 const HeaderMenu = () => {
+  const router = useRouter();
+  const [activeItem, setActiveItem] = useState('');
+
+  const { data, loading } = useFetch("/home/csfdu");
+
+  useEffect(() =>{
+    const {pathname} = router;
+    setActiveItem(pathname);
+  },[router])
+
+
   return (
-    <Navbar sticky="top" data-bs-theme="dark" className={Style.navbar}>
-      <Container>
-        <Nav className="me-auto">
+    <Navbar collapseOnSelect expand="lg"  className={Style.navbar}>
+    <Container>
+      <Navbar.Brand className={Style.menuBrand}>{data?.admin?.name}</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+      <Nav className={`${Style.nav} me-auto`}>
           <Nav>
-            <Link href="/">হোম</Link>
+            <Link href="/" className={activeItem === '/' ? Style.active : ''}>হোম</Link>
           </Nav>
           <Nav>
-            <Link href="/advisor">উপদেষ্টামন্ডলী</Link>
+            <Link href="/advisor"  className={activeItem === '/advisor' ? Style.active : ''}>উপদেষ্টামন্ডলী</Link>
           </Nav>
           <Nav>
-            <Link href="/alumni">এলামনাই</Link>
+            <Link href="/alumni"  className={activeItem === '/alumni' ? Style.active : ''}>এলামনাই</Link>
           </Nav>
           <Nav>
-            <Link href="/executive">কার্যনির্বাহী কমিটি</Link>
+            <Link href="/executive"  className={activeItem === '/executive' ? Style.active : ''}>কার্যনির্বাহী কমিটি</Link>
           </Nav>
           <Nav>
-            <Link href="/magazine">ম্যাগাজিন</Link>
+            <Link href="/magazine"  className={activeItem === '/magazine' ? Style.active : ''}>ম্যাগাজিন</Link>
           </Nav>
           <Nav className={`${Style.dropdown} d-flex`}>
             <Link href="/executive" className={Style.dropbtn}>
@@ -36,24 +52,42 @@ const HeaderMenu = () => {
             </div>
           </Nav>
           <Nav>
-            <Link href="/notice">নোটিশ</Link>
+            <Link href="/notice" className={activeItem === '/notice' ? Style.active : ''}>নোটিশ</Link>
           </Nav>
           <Nav>
-            <Link href="/history">সংগঠনটির ইতিহাস</Link>
+            <Link href="/history" className={activeItem === '/history' ? Style.active : ''}>সংগঠনটির ইতিহাস</Link>
           </Nav>
           <Nav>
-            <Link href="/bank">ব্যাংক একাউন্ট</Link>
+            <Link href="/bank" className={activeItem === '/bank' ? Style.active : ''}>ব্যাংক একাউন্ট</Link>
           </Nav>
           <Nav>
-            <Link href="/registration">রেজিস্ট্রেশন</Link>
+            <Link href="/registration" className={activeItem === '/registration' ? Style.active : ''}>রেজিস্ট্রেশন</Link>
           </Nav>
           <Nav>
-            <Link href="/application">সদস্য আবেদন</Link>
+            <Link href="/application" className={activeItem === '/application' ? Style.active : ''}>সদস্য আবেদন</Link>
           </Nav>
         </Nav>
-      </Container>
-    </Navbar>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>  
   );
 };
 
 export default HeaderMenu;
+
+
+
+
+
+
+
+
+
+//  <Navbar collapseOnSelect sticky="top" data-bs-theme="dark" className={Style.navbar}>
+//       <Container>
+//       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+//         <Navbar.Collapse id="responsive-navbar-nav">
+        
+//         </Navbar.Collapse>
+//       </Container>
+//     </Navbar> 

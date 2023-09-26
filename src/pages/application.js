@@ -9,7 +9,8 @@ import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Application() {
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
+  const [isValid, setIsValid] = useState(true);
   const {
     register,
     handleSubmit,
@@ -21,10 +22,17 @@ export default function Application() {
   const handleSelectChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedOption(selectedValue);
-  }
+  };
 
   const onSubmit = async (data) => {
     try {
+      data.bloodGroup = selectedOption;
+
+      if(data.phone.length > 11 || data.phone.length < 11){
+        setIsValid(false);
+        return;
+      }
+
       // data.admin_name = await dbData?.admin?.admin_name;
       // const response = await axios.post(
       //   "https://amaderthikana.com/api/registration",
@@ -34,11 +42,12 @@ export default function Application() {
       // );
       // console.log(response.data);
       console.log(data);
-      reset();
+      // reset();
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <>
       <Head>
@@ -77,7 +86,7 @@ export default function Application() {
                           placeholder="Name"
                         />
                         {errors.name && (
-                          <span className="text-danger" >Name is required</span>
+                          <span className="text-danger">Name is required</span>
                         )}
                       </Form.Group>
                       <Form.Group
@@ -94,7 +103,9 @@ export default function Application() {
                           placeholder="WorkPlace/Department-Institution"
                         />
                         {errors.workplace && (
-                          <span className="text-danger">Workplace is required</span>
+                          <span className="text-danger">
+                            Workplace is required
+                          </span>
                         )}
                       </Form.Group>
                     </div>
@@ -113,7 +124,9 @@ export default function Application() {
                           placeholder="Session"
                         />
                         {errors.session && (
-                          <span className="text-danger">Session is required</span>
+                          <span className="text-danger">
+                            Session is required
+                          </span>
                         )}
                       </Form.Group>
                       <Form.Group
@@ -130,7 +143,9 @@ export default function Application() {
                           placeholder="Current Address/Hall Name"
                         />
                         {errors.currentAddress && (
-                          <span className="text-danger">Current Address / Hall Name is required</span>
+                          <span className="text-danger">
+                            Current Address / Hall Name is required
+                          </span>
                         )}
                       </Form.Group>
                     </div>
@@ -149,7 +164,9 @@ export default function Application() {
                           placeholder="Permanent Address/Upazila"
                         />
                         {errors.permanentAddress && (
-                          <span className="text-danger">Permanent Address / Upazila is required</span>
+                          <span className="text-danger">
+                            Permanent Address / Upazila is required
+                          </span>
                         )}
                       </Form.Group>
                       <Form.Group
@@ -160,12 +177,15 @@ export default function Application() {
                           Phone
                         </Form.Label>
                         <Form.Control
-                          type="text"
+                          type="number"
                           className={Style.inputField}
                           {...register("phone", { required: true })}
                           placeholder="Phone"
                         />
-                        {errors.phone && <span className="text-danger">Phone is required</span>}
+                        {errors.phone && (
+                          <span className="text-danger">Phone is required</span>
+                        )}
+                        {!isValid && <span className="text-danger">This number is not valid</span>}
                       </Form.Group>
                     </div>
                     <div className={`${Style.contactInstitute} mb-4`}>
@@ -182,7 +202,9 @@ export default function Application() {
                           {...register("email", { required: true })}
                           placeholder="E-mail"
                         />
-                        {errors.email && <span className="text-danger">Email is required</span>}
+                        {errors.email && (
+                          <span className="text-danger">Email is required</span>
+                        )}
                       </Form.Group>
                       <Form.Group
                         className={`${Style.institute} mb-3`}
@@ -191,20 +213,26 @@ export default function Application() {
                         <Form.Label className={Style.inputLabel}>
                           Blood Group
                         </Form.Label>
-                        <Form.Select  value={selectedOption} onChange={handleSelectChange} aria-label="Default select example">
+                        <Form.Select
+                          value={selectedOption}
+                          onChange={handleSelectChange}
+                          aria-label="Default select example"
+                        >
                           <option>Select Blood Group</option>
-                          <option value="1">A+</option>
-                          <option value="2">A-</option>
-                          <option value="3">B+</option>
-                          <option value="4">B-</option>
-                          <option value="5">O+</option>
-                          <option value="6">O-</option>
-                          <option value="7">AB+</option>
-                          <option value="8">AB-</option>
+                          <option value="A+">A+</option>
+                          <option value="A-">A-</option>
+                          <option value="B+">B+</option>
+                          <option value="B-">B-</option>
+                          <option value="O+">O+</option>
+                          <option value="O-">O-</option>
+                          <option value="AB+">AB+</option>
+                          <option value="AB-">AB-</option>
                         </Form.Select>
 
                         {errors.currentAddress && (
-                          <span className="text-danger">E-mail is required</span>
+                          <span className="text-danger">
+                            E-mail is required
+                          </span>
                         )}
                       </Form.Group>
                     </div>
@@ -222,7 +250,9 @@ export default function Application() {
                           {...register("file", { required: true })}
                         />
                         {errors.file && (
-                          <span className="text-danger">Profile Image is required</span>
+                          <span className="text-danger">
+                            Profile Image is required
+                          </span>
                         )}
                       </Form.Group>
                     </div>
