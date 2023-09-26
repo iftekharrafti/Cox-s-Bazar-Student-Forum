@@ -26,10 +26,10 @@ export default function Advisor() {
             <div className="headerTitle">
               <h3 class="headerTitleMain">সংগঠনটির ইতিহাস</h3>
             </div>
-            {/* Alumni Details */}
+            {/* History Details */}
             <Container className="mb-5">
               <Row>
-                <Col md={10} sm={12} className="mx-auto">
+                <Col md={10} sm={12} className="mx-auto" data-aos="fade-up">
                   <p style={{ lineHeight: 1.7, fontFamily: "Poppins" }}>
                     {data?.data[0]?.dureg}
                   </p>

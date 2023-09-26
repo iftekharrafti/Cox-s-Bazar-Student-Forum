@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const NoticeCard = ({ item }) => {
   return (
-    <Col lg={6} md={6} sm={12}>
+    <Col lg={6} md={6} sm={12} data-aos="fade-up">
       <div className={Style.cardDesign}>
         <Link href={`/notice/${item.id}`}>
           <Img

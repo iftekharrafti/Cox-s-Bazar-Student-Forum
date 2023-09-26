@@ -11,7 +11,7 @@ const President = ({ data, loading }) => {
         {data?.welcome?.map((item) => {
           return (
             <Row className="mb-5" key={item.serial}>
-              <Col lg={4} md={4} sm={12} className='d-flex align-items-center'>
+              <Col lg={4} md={4} sm={12} className='d-flex align-items-center' data-aos="fade-right">
                 <div className={Style.imgContent}>
                 <Img
                   src={
@@ -22,7 +22,7 @@ const President = ({ data, loading }) => {
                 />
                 </div>
               </Col>
-              <Col lg={8} md={8} sm={12}>
+              <Col lg={8} md={8} sm={12} data-aos="fade-left">
                 <div Style={Style.content}>
                   <h2 className={Style.title}>{item?.title}</h2>
                   <p className={Style.text1}>{item?.text1}</p>

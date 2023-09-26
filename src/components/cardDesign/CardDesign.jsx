@@ -13,7 +13,7 @@ const CardDesign = ({ item }) => {
 
   return (
     <Col lg={4} md={6} sm={12}>
-      <div className={Style.cardDesign}>
+      <div className={Style.cardDesign} data-aos="fade-up">
         <Img src={baseImgUrl + item?.image} className={Style.cardImg} />
         <h4 className={Style.name}>{item?.name}</h4>
         <p className={Style.text}>{item?.text1}</p>
