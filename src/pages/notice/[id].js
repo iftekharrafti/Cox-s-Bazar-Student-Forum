@@ -16,7 +16,7 @@ const NoticeDetails = () => {
 
 
   if (!notice) {
-    return <h3 className="text-center font-bold">Notice not found.</h3>;
+    return <h3 className="text-center font-bold mb-4">Notice not found.</h3>;
   }
   return (
     <>
@@ -37,7 +37,7 @@ const NoticeDetails = () => {
               ) : (
                 <div>
                   <h3
-                    style={{ fontSize: "30px", fontWeight: 600 }}
+                    style={{ fontSize: "30px", fontWeight: 600, fontFamily: 'SolaimanLipi' }}
                     className="mb-4"
                   >
                     {notice?.title}

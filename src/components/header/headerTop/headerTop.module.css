@@ -9,3 +9,8 @@
     margin-left: 15px;
     font-family: 'SolaimanLipi', sans-serif;
 }
+@media (max-width: 768px) {
+    .logo{
+        padding: 10px 0;
+    }
+  }

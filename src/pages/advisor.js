@@ -7,6 +7,8 @@ import CardDesign from "@/components/cardDesign/CardDesign";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Advisor() {
+
+  
   const { data, loading } = useFetch("/member/csfdu/Advisor");
   return (
     <>

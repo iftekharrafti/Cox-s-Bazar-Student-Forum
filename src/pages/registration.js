@@ -5,10 +5,12 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import Style from "../styles/Registration.module.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Advisor() {
+  const [isValid, setIsValid] = useState(true);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const { data: dbData, loading } = useFetch("/member/csfdu/Advisor");
@@ -16,11 +18,17 @@ export default function Advisor() {
   const onSubmit = async(data) =>{
     try {
       data.admin_name = await dbData?.admin?.admin_name
-      const response = await axios.post('https://amaderthikana.com/api/registration', { 
-        data
-       });
+
+      if(data.phone.length > 11 || data.phone.length < 11){
+        setIsValid(false);
+        return;
+      }
+
+      const response = await axios.post('https://amaderthikana.com/api/registration', data
+       );
       console.log(response.data);
-      console.log(data);
+
+        setIsValid(true);
       reset();
     } catch (error) {
       console.error(error);
@@ -87,12 +95,13 @@ export default function Advisor() {
                         Phone Number
                       </Form.Label>
                       <Form.Control
-                        type="text"
-                        className={`${Style.inputField} input`}
+                        type="number"
+                        className={`${Style.inputField} ${Style.inputNumber} input`}
                         {...register("phone", { required: true })}
                         placeholder="Phone Number"
                       />
                       {errors.phone && <span className="text-danger">Phone Number is required</span>}
+                      {!isValid && <span className="text-danger">This number is not valid</span>}
                     </Form.Group>
                     <Form.Group
                       className={`${Style.institute} mb-3`}
