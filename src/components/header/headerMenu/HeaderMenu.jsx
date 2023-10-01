@@ -12,6 +12,7 @@ const HeaderMenu = () => {
   const router = useRouter();
   const [activeItem, setActiveItem] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleMouseEnter = () => {
     setIsDropdownOpen(true);
@@ -19,6 +20,10 @@ const HeaderMenu = () => {
 
   const handleMouseLeave = () => {
     setIsDropdownOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isDropdownOpen);
   };
 
   const { data, loading } = useFetch("/home/csfdu");
@@ -34,18 +39,18 @@ const HeaderMenu = () => {
         <Navbar.Brand className={Style.menuBrand} style={{ color: "#fff", fontFamily: 'Noto Sans Bengali' }}>
           {data?.admin?.name}
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setExpanded(!expanded)} />
+        <Navbar.Collapse id="responsive-navbar-nav" className={isDropdownOpen ? 'show' : ''} in={expanded}>
           <Nav className={`${Style.nav} me-auto`}>
             <Nav>
-              <Link href="/" className={activeItem === "/" ? Style.active : ""}>
+              <Link href="/" className={activeItem === "/" ? Style.active : ""}  onClick={() => setExpanded(false)}>
                 হোম
               </Link>
             </Nav>
             <Nav>
               <Link
                 href="/advisor"
-                className={activeItem === "/advisor" ? Style.active : ""}
+                className={activeItem === "/advisor" ? Style.active : ""}  onClick={() => setExpanded(false)}
               >
                 উপদেষ্টামন্ডলী
               </Link>
@@ -53,7 +58,7 @@ const HeaderMenu = () => {
             <Nav>
               <Link
                 href="/alumni"
-                className={activeItem === "/alumni" ? Style.active : ""}
+                className={activeItem === "/alumni" ? Style.active : ""}  onClick={() => setExpanded(false)}
               >
                 এলামনাই
               </Link>
@@ -61,7 +66,7 @@ const HeaderMenu = () => {
             <Nav>
               <Link
                 href="/executive"
-                className={activeItem === "/executive" ? Style.active : ""}
+                className={activeItem === "/executive" ? Style.active : ""}  onClick={() => setExpanded(false)}
               >
                 কার্যনির্বাহী কমিটি
               </Link>
@@ -69,7 +74,7 @@ const HeaderMenu = () => {
             <Nav>
               <Link
                 href="/magazine"
-                className={activeItem === "/magazine" ? Style.active : ""}
+                className={activeItem === "/magazine" ? Style.active : ""}  onClick={() => setExpanded(false)}
               >
                 ম্যাগাজিন
               </Link>
@@ -80,13 +85,13 @@ const HeaderMenu = () => {
             onMouseLeave={handleMouseLeave}>
                 {/* <div  style={{backgroundColor: 'red'}}> */}
                 <NavDropdown.Item className={`${Style.dropdownItem} py-2 px-3`}>
-                  <Link href="/senior">সিনিয়র সদস্য</Link>
+                  <Link href="/senior"  onClick={() => setExpanded(false)}>সিনিয়র সদস্য</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item className={`${Style.dropdownItem} py-2 px-3`}>
-                  <Link href="/general">সাধারণ সদস্য</Link>
+                  <Link href="/general"  onClick={() => setExpanded(false)}>সাধারণ সদস্য</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item className={`${Style.dropdownItem} py-2 px-3`}>
-                  <Link href="/expre">সাবেক সভাপতি ও সাধারণ সম্পাদক বৃন্দ</Link>
+                  <Link href="/expre"  onClick={() => setExpanded(false)}>সাবেক সভাপতি ও সাধারণ সম্পাদক বৃন্দ</Link>
                 </NavDropdown.Item>
                 {/* </div> */}
               </NavDropdown>
@@ -94,7 +99,7 @@ const HeaderMenu = () => {
             <Nav>
               <Link
                 href="/notice"
-                className={activeItem === "/notice" ? Style.active : ""}
+                className={activeItem === "/notice" ? Style.active : ""}  onClick={() => setExpanded(false)}
               >
                 নোটিশ
               </Link>
@@ -102,7 +107,7 @@ const HeaderMenu = () => {
             <Nav>
               <Link
                 href="/history"
-                className={activeItem === "/history" ? Style.active : ""}
+                className={activeItem === "/history" ? Style.active : ""}  onClick={() => setExpanded(false)}
               >
                 সংগঠনটির ইতিহাস
               </Link>
@@ -110,7 +115,7 @@ const HeaderMenu = () => {
             <Nav>
               <Link
                 href="/bank"
-                className={activeItem === "/bank" ? Style.active : ""}
+                className={activeItem === "/bank" ? Style.active : ""}  onClick={() => setExpanded(false)}
               >
                 ব্যাংক একাউন্ট
               </Link>
@@ -118,7 +123,7 @@ const HeaderMenu = () => {
             <Nav>
               <Link
                 href="/registration"
-                className={activeItem === "/registration" ? Style.active : ""}
+                className={activeItem === "/registration" ? Style.active : ""}  onClick={() => setExpanded(false)}
               >
                 রেজিস্ট্রেশন
               </Link>
@@ -126,7 +131,7 @@ const HeaderMenu = () => {
             <Nav>
               <Link
                 href="/application"
-                className={activeItem === "/application" ? Style.active : ""}
+                className={activeItem === "/application" ? Style.active : ""}  onClick={() => setExpanded(false)}
               >
                 সদস্য আবেদন
               </Link>

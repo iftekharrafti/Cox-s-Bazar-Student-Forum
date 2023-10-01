@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { AiFillLeftCircle, AiFillRightCircle } from 'react-icons/ai';
 
 const Pagination = ({ coursesPerPage, totalPosts, setCurrentPage }) => {
@@ -31,7 +31,10 @@ const Pagination = ({ coursesPerPage, totalPosts, setCurrentPage }) => {
   };
 
   return (
-    <div className="d-flex justify-content-center pt-3 pb-5">
+    <Container>
+      <Row>
+        <Col md={10} sm={12}>
+        <div className="d-flex justify-content-center pt-3 pb-5">
         {/* Decrement Button */}
       {newPage === 1 ? (
         <Button variant="primary" className="py-2 px-3 me-3" disabled>
@@ -73,6 +76,9 @@ const Pagination = ({ coursesPerPage, totalPosts, setCurrentPage }) => {
         </Button>
       )}
     </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

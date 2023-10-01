@@ -45,11 +45,11 @@ export default function Home() {
                     <CardDesign key={item.serial} item={item} />
                   ))}
               </Row>
-              <Pagination
+              {/* <Pagination
                 coursesPerPage={coursesPerPage}
                 totalPosts={data?.data?.length}
                 setCurrentPage={setCurrentPage}
-              />
+              /> */}
             </Container>
           </>
         )}

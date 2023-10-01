@@ -11,13 +11,13 @@ const HeaderTop = () => {
     <header>
       <Container>
         <div className={Style.logo}>
-          <Link href="/" className="d-flex">
+          <Link href="/" className="d-flex align-items-center">
             <img
               src="./csfdu.jpeg"
               alt=""
               style={{ height: "40px", width: "auto" }}
             />
-            <h3 className={Style.name} style={{ fontSize: data?.admin?.header_size }}>
+            <h3 className={Style.name} >
               {data?.admin?.name}
             </h3>
           </Link>
