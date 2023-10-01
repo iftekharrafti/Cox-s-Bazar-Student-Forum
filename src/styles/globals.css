@@ -9,8 +9,12 @@
 
 @font-face {
   font-family: 'SolaimanLipi';
-  src: url('../../public/fonts/SolaimanLipi_Bold_10-03-12.ttf') format('truetype'); /* Adjust the path to your font file */
+  /* src: url('../../public/fonts/SolaimanLipi_Bold_10-03-12.ttf') format('truetype');  */
+  /* Adjust the path to your font file */
   /* Add other font formats if necessary */
+  src: url('../../public/fonts/SolaimanLipi_22-02-2012.ttf') format('truetype'),
+       url('../../public/fonts/SolaimanLipi_29-05-06.ttf') format('truetype'),
+       url('../../public/fonts/SolaimanLipi_Bold_10-03-12.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

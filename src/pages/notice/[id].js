@@ -27,7 +27,7 @@ const NoticeDetails = () => {
         <link rel="icon" href="./csfdu.jpeg" />
       </Head>
       <main>
-        <Container className="mb-5">
+        <Container className="mb-5 mt-5">
           <Row>
             <Col md={8} sm={12} className="mx-auto">
               {loading ? (
