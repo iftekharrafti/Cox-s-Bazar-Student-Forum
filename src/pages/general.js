@@ -1,19 +1,23 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import President from "@/components/home/president/President";
 import useFetch from "@/hooks/useFetch";
-import HomeAdvisor from "@/components/home/homeAdvisor/HomeAdvisor";
-import HomeCountUp from "@/components/home/homeCountUp/HomeCountUp";
-import CarouselBanner from "@/components/home/carouselBanner/CarouselBanner";
 import { Container, Row } from "react-bootstrap";
 import CardDesign from "@/components/cardDesign/CardDesign";
+import { useState } from "react";
+import Pagination from "@/components/pagination/Pagination";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [coursesPerPage] = useState(15);
+
   const { data, loading } = useFetch("/member/csfdu/General");
+
+  // Pagination er jonno
+  const indexOfLastPost = currentPage * coursesPerPage;
+  const indexOfFirstPost = indexOfLastPost - coursesPerPage;
+
   return (
     <>
       <Head>
@@ -35,10 +39,17 @@ export default function Home() {
             {/* Advisor Details */}
             <Container className="mt-4">
               <Row>
-                {data?.data.map((item) => (
-                  <CardDesign key={item.serial} item={item} />
-                ))}
+                {data?.data
+                  .slice(indexOfFirstPost, indexOfLastPost)
+                  .map((item) => (
+                    <CardDesign key={item.serial} item={item} />
+                  ))}
               </Row>
+              <Pagination
+                coursesPerPage={coursesPerPage}
+                totalPosts={data?.data?.length}
+                setCurrentPage={setCurrentPage}
+              />
             </Container>
           </>
         )}

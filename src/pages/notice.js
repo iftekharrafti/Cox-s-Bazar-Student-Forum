@@ -24,7 +24,7 @@ export default function Advisor() {
         ) : (
           <>
           {/* Notice Title */}
-            <div className="headerTitle">
+            <div className="headerTitle mt-5">
               <h3 class="headerTitleMain">নোটিশ</h3>
             </div>
             {/* Notice Details */}

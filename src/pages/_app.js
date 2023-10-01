@@ -6,6 +6,9 @@ import "@/styles/globals.css";
 import "bootstrap/dist/css/bootstrap.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -21,6 +24,7 @@ export default function App({ Component, pageProps }) {
       <HeaderMenu />
       <Component {...pageProps} />
       <Footer></Footer>
+      <ToastContainer />
     </>
   );
 }

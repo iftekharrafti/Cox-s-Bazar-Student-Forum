@@ -5,10 +5,7 @@ import { BiSolidEditLocation } from "react-icons/bi";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { BsArrowRightCircleFill } from "react-icons/bs";
-import { BsTwitter } from "react-icons/bs";
-import { BsFacebook } from "react-icons/bs";
-import { BsYoutube } from "react-icons/bs";
-import { BsLinkedin } from "react-icons/bs";
+import { BsTwitter, BsFacebook, BsYoutube, BsLinkedin } from "react-icons/bs";
 import Link from "next/link";
 import useFetch from "@/hooks/useFetch";
 
@@ -18,7 +15,7 @@ const Footer = () => {
     <footer className={Style.footer}>
       <Container>
         <Row>
-          <Col lg={3} md={3} sm={6}>
+          <Col lg={3} md={6} sm={6}>
             <h4 className={Style.title}>Address</h4>
             <div>
               <ul className={`${Style.footerItems} p-0`}>
@@ -43,7 +40,7 @@ const Footer = () => {
               </ul>
             </div>
           </Col>
-          <Col lg={3} md={3} sm={6}>
+          <Col lg={3} md={6} sm={6}>
             <h4 className={Style.title}>Quick Links</h4>
             <div>
               <ul className={`${Style.footerItems} p-0`}>
@@ -82,7 +79,7 @@ const Footer = () => {
               </ul>
             </div>
           </Col>
-          <Col lg={4} md={4} sm={6}>
+          <Col lg={4} md={6} sm={6}>
             <h4 className={Style.title}>Our Social Networks</h4>
             <div className={Style.footerSocialIcons}>
               <div  className={Style.footerSocialIcon}>
@@ -99,7 +96,7 @@ const Footer = () => {
               </div>
             </div>
           </Col>
-          <Col lg={2} md={2} sm={6}>
+          <Col lg={2} md={6} sm={6}>
             <h4 className={Style.title}>Developed By</h4>
             <img src="./ancovabr.png" alt="" className={Style.ancovaLogo} />
           </Col>

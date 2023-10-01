@@ -23,7 +23,7 @@ export default function Magazine() {
           </div>
         ) : (
           <>
-            <div className="headerTitle">
+            <div className="headerTitle mt-5">
               <h3 class="headerTitleMain">ম্যাগাজিন</h3>
             </div>
             {/* Alumni Details */}

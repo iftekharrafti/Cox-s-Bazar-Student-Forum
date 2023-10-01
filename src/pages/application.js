@@ -6,19 +6,23 @@ import { useForm } from "react-hook-form";
 import Style from "../styles/Application.module.css";
 import { useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "@/utils/api";
+import { toast } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Application() {
   const [selectedOption, setSelectedOption] = useState("");
   const [isValid, setIsValid] = useState(true);
+  const [loadingBtn, setLoadingBtn] = useState(false);
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  const { data } = useFetch("/member/csfdu/Advisor");
+  const { data:dataAdmin } = useFetch("/member/csfdu/Advisor");
 
   const handleSelectChange = (event) => {
     const selectedValue = event.target.value;
@@ -27,16 +31,17 @@ export default function Application() {
 
   const onSubmit = async (data) => {
     try {
-      data.admin_name = await data?.admin?.admin_name;
+      setLoadingBtn(true);
+      data.admin_name = await dataAdmin?.admin?.admin_name;
       data.blood = selectedOption;
-      const image = data.file[0];
+      const image = data.file[0]; 
       const formData = new FormData();
 
       formData.append("name", data.name);
       formData.append("workplace", data.workplace);
       formData.append("session", data.session);
-      formData.append("currentAddress", data.current_address);
-      formData.append("permanentAddress", data.permanent_address);
+      formData.append("current_address", data.current_address);
+      formData.append("permanent_address", data.permanent_address);
       formData.append("phone", data.phone);
       formData.append("email", data.email);
       formData.append("blood", data.blood);
@@ -50,14 +55,16 @@ export default function Application() {
 
       const response = await axios({
         method: "post",
-        url: "https://amaderthikana.com/api/application",
+        url: BASE_URL + '/application', 
         data: formData,
         headers: {
           "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
         },
       });
       console.log(response);
-      // reset();
+      toast.success("Registration Successful");
+      setLoadingBtn(false);
+      reset();
     } catch (error) {
       console.error(error);
     }
@@ -73,7 +80,7 @@ export default function Application() {
       </Head>
       <main>
         <>
-          <div className="headerTitle">
+          <div className="headerTitle mt-5">
             <h3 class="headerTitleMain">MEMBER APPLICATION FORM</h3>
           </div>
           {/* Alumni Details */}
@@ -265,11 +272,22 @@ export default function Application() {
                     </Form.Group>
                   </div>
 
-                  <div className="d-flex justify-content-center">
+                  {
+                    loadingBtn ? (
+                      <div className="d-flex justify-content-center">
+                    <Button disabled className={Style.submit}>
+                      Inserting...
+                    </Button>
+                  </div>
+                    ):(
+                      <div className="d-flex justify-content-center">
                     <Button type="submit" className={Style.submit}>
                       Submit
                     </Button>
                   </div>
+                    )
+                  }
+                  
                 </Form>
               </Col>
             </Row>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://amaderthikana.com/api";
+export const BASE_URL = "https://amaderthikana.com/api";
 
 export const fetchDataFromApi = async (url, params) => {
   try {

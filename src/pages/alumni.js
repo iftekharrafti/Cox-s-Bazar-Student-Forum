@@ -23,7 +23,7 @@ export default function Alumni() {
           </div>
         ) : (
           <>
-            <div className="headerTitle">
+            <div className="headerTitle mt-5">
               <h3 class="headerTitleMain">এলামনাই</h3>
             </div>
             {/* Alumni Details */}

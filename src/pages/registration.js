@@ -6,34 +6,44 @@ import Style from "../styles/Registration.module.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
+import { BASE_URL } from "@/utils/api";
+import { toast } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Advisor() {
   const [isValid, setIsValid] = useState(true);
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const [loadingBtn, setLoadingBtn] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const { data: dbData, loading } = useFetch("/member/csfdu/Advisor");
 
-  const onSubmit = async(data) =>{
+  const onSubmit = async (data) => {
+    setLoadingBtn(true);
     try {
-      data.admin_name = await dbData?.admin?.admin_name
+      data.admin_name = await dbData?.admin?.admin_name;
 
-      if(data.phone.length > 11 || data.phone.length < 11){
+      if (data.phone.length > 11 || data.phone.length < 11) {
         setIsValid(false);
         return;
       }
 
-      const response = await axios.post('https://amaderthikana.com/api/registration', data
-       );
+      const response = await axios.post(BASE_URL + "/registration", data);
       console.log(response.data);
 
-        setIsValid(true);
+      setIsValid(true);
+      toast.success("Registration Successful");
+      setLoadingBtn(false);
       reset();
     } catch (error) {
       console.error(error);
     }
-  }
+  };
   return (
     <>
       <Head>
@@ -45,7 +55,7 @@ export default function Advisor() {
       <main>
         <>
           {/* Registration Title */}
-          <div className="headerTitle">
+          <div className="headerTitle mt-5">
             <h3 class="headerTitleMain">EXHIBITORS DETAILS</h3>
             <h3 class="headerTitleMain">TOURISM FAIR REGISTRATION FROM</h3>
           </div>
@@ -68,7 +78,11 @@ export default function Advisor() {
                         {...register("name", { required: true })}
                         placeholder="Contact Person"
                       />
-                      {errors.name && <span className="text-danger">Contact Person is required</span>}
+                      {errors.name && (
+                        <span className="text-danger">
+                          Contact Person is required
+                        </span>
+                      )}
                     </Form.Group>
                     <Form.Group
                       className={`${Style.institute} mb-3`}
@@ -83,7 +97,11 @@ export default function Advisor() {
                         {...register("custom1", { required: true })}
                         placeholder="Institute/Organization"
                       />
-                      {errors.custom1 && <span className="text-danger">Institute/Organization is required</span>}
+                      {errors.custom1 && (
+                        <span className="text-danger">
+                          Institute/Organization is required
+                        </span>
+                      )}
                     </Form.Group>
                   </div>
                   <div className={`${Style.contactInstitute} mb-4`}>
@@ -100,8 +118,16 @@ export default function Advisor() {
                         {...register("phone", { required: true })}
                         placeholder="Phone Number"
                       />
-                      {errors.phone && <span className="text-danger">Phone Number is required</span>}
-                      {!isValid && <span className="text-danger">This number is not valid</span>}
+                      {errors.phone && (
+                        <span className="text-danger">
+                          Phone Number is required
+                        </span>
+                      )}
+                      {!isValid && (
+                        <span className="text-danger">
+                          This number is not valid
+                        </span>
+                      )}
                     </Form.Group>
                     <Form.Group
                       className={`${Style.institute} mb-3`}
@@ -116,16 +142,26 @@ export default function Advisor() {
                         {...register("custom2", { required: true })}
                         placeholder="E-mail"
                       />
-                      {errors.custom2 && <span className="text-danger">E-mail is required</span>}
+                      {errors.custom2 && (
+                        <span className="text-danger">E-mail is required</span>
+                      )}
                     </Form.Group>
                   </div>
                   <h6 className={Style.stallSizeTitle}>Stall Size :</h6>
                   <p className={Style.stallSizeText}>
                     Standard Booth(8*8)sft=64sft, Regular Rate(Negotiable)
                   </p>
-                  <div className="d-flex justify-content-center">
-                    <Button type="submit" className={Style.submit}>Submit</Button>
-                  </div>
+                  {loadingBtn ? (
+                    <div className="d-flex justify-content-center">
+                      <Button disabled className={Style.submit}>Inserting...</Button>
+                    </div>
+                  ) : (
+                    <div className="d-flex justify-content-center">
+                      <Button type="submit" className={Style.submit}>
+                        Submit
+                      </Button>
+                    </div>
+                  )}
                 </Form>
               </Col>
             </Row>

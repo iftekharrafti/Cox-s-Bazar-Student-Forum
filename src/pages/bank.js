@@ -23,7 +23,7 @@ export default function Bank() {
           </div>
         ) : (
           <>
-            <div className="headerTitle">
+            <div className="headerTitle mt-5">
               <h3 class="headerTitleMain">ব্যাংক একাউন্ট</h3>
             </div>
             {/* Alumni Details */}

@@ -9,12 +9,17 @@ import { BsInstagram } from "react-icons/bs";
 import QuickViewModal from "../quickViewModal/QuickViewModal";
 
 const CardDesign = ({ item }) => {
-    const [modalShow, setModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <Col lg={4} md={6} sm={12}>
       <div className={Style.cardDesign} data-aos="fade-up">
-        <Img src={baseImgUrl + item?.image} className={Style.cardImg} />
+        {item?.image !== null ? (
+          <Img src={baseImgUrl + item?.image} className={Style.cardImg} />
+        ) : (
+          <Img src="./default.png" className={Style.cardImg} />
+        )}
+
         <h4 className={Style.name}>{item?.name}</h4>
         <p className={Style.text}>{item?.text1}</p>
         <div className={Style.icons}>
@@ -34,7 +39,11 @@ const CardDesign = ({ item }) => {
         </div>
 
         {/* Modal */}
-        <QuickViewModal show={modalShow} onHide={() => setModalShow(false)} item={item} />
+        <QuickViewModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          item={item}
+        />
       </div>
     </Col>
   );

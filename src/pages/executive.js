@@ -23,7 +23,7 @@ export default function Advisor() {
           </div>
         ) : (
           <>
-            <div className="headerTitle">
+            <div className="headerTitle mt-5">
               <h3 class="headerTitleMain">কার্যনির্বাহী কমিটি</h3>
             </div>
             {/* Alumni Details */}
