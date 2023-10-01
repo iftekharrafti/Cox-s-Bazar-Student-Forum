@@ -22,7 +22,7 @@
   padding: 3px 0;
   font-weight: 500;
   outline: none;
-  font-family: "SolaimanLipi", sans-serif;
+  font-family: 'Noto Sans Bengali', sans-serif;
 }
 .navbar a.active{
   color: black;
