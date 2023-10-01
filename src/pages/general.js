@@ -39,11 +39,9 @@ export default function Home() {
             {/* Advisor Details */}
             <Container className="mt-4">
               <Row>
-                {data?.data
-                  .slice(indexOfFirstPost, indexOfLastPost)
-                  .map((item) => (
-                    <CardDesign key={item.serial} item={item} />
-                  ))}
+                {data?.data.map((item) => (
+                  <CardDesign key={item.serial} item={item} />
+                ))}
               </Row>
               {/* <Pagination
                 coursesPerPage={coursesPerPage}
