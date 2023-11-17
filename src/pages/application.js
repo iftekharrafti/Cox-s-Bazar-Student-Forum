@@ -9,8 +9,6 @@ import axios from "axios";
 import { BASE_URL } from "@/utils/api";
 import { toast } from "react-toastify";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Application() {
   const [selectedOption, setSelectedOption] = useState("");
   const [isValid, setIsValid] = useState(true);
@@ -22,7 +20,7 @@ export default function Application() {
     reset,
     formState: { errors },
   } = useForm();
-  const { data:dataAdmin } = useFetch("/member/csfdu/Advisor");
+  const { data: dataAdmin } = useFetch("/member/csfdu/Advisor");
 
   const handleSelectChange = (event) => {
     const selectedValue = event.target.value;
@@ -34,7 +32,7 @@ export default function Application() {
       setLoadingBtn(true);
       data.admin_name = await dataAdmin?.admin?.admin_name;
       data.blood = selectedOption;
-      const image = data.file[0]; 
+      const image = data.file[0];
       const formData = new FormData();
 
       formData.append("name", data.name);
@@ -55,7 +53,7 @@ export default function Application() {
 
       const response = await axios({
         method: "post",
-        url: BASE_URL + '/application', 
+        url: BASE_URL + "/application",
         data: formData,
         headers: {
           "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
@@ -272,22 +270,19 @@ export default function Application() {
                     </Form.Group>
                   </div>
 
-                  {
-                    loadingBtn ? (
-                      <div className="d-flex justify-content-center">
-                    <Button disabled className={Style.submit}>
-                      Inserting...
-                    </Button>
-                  </div>
-                    ):(
-                      <div className="d-flex justify-content-center">
-                    <Button type="submit" className={Style.submit}>
-                      Submit
-                    </Button>
-                  </div>
-                    )
-                  }
-                  
+                  {loadingBtn ? (
+                    <div className="d-flex justify-content-center">
+                      <Button disabled className={Style.submit}>
+                        Inserting...
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="d-flex justify-content-center">
+                      <Button type="submit" className={Style.submit}>
+                        Submit
+                      </Button>
+                    </div>
+                  )}
                 </Form>
               </Col>
             </Row>

@@ -4,8 +4,6 @@ import useFetch from "@/hooks/useFetch";
 import { Col, Container, Row } from "react-bootstrap";
 import CardDesign from "@/components/cardDesign/CardDesign";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Bank() {
   const { data, loading } = useFetch("/bank/csfdu");
   return (
@@ -29,8 +27,10 @@ export default function Bank() {
             {/* Alumni Details */}
             <Container className="mt-4 mb-5">
               <Row>
-              <Col md={10} sm={12} className="mx-auto">
-                    <p dangerouslySetInnerHTML={{ __html: data?.data[0]?.dureg }} />
+                <Col md={10} sm={12} className="mx-auto">
+                  <p
+                    dangerouslySetInnerHTML={{ __html: data?.data[0]?.dureg }}
+                  />
                 </Col>
               </Row>
             </Container>

@@ -4,8 +4,6 @@ import useFetch from "@/hooks/useFetch";
 import { Container, Row } from "react-bootstrap";
 import NoticeCard from "@/components/noticeCard/NoticeCard";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Notice() {
   const { data, loading } = useFetch("/notice/csfdu");
   return (
@@ -23,14 +21,14 @@ export default function Notice() {
           </div>
         ) : (
           <>
-          {/* Notice Title */}
+            {/* Notice Title */}
             <div className="headerTitle mt-5">
               <h3 class="headerTitleMain">নোটিশ</h3>
             </div>
             {/* Notice Details */}
             <Container className="mt-4">
               <Row className="mb-4">
-                {data?.data.map((item) => (
+                {data?.data?.map((item) => (
                   <NoticeCard key={item.serial} item={item} />
                 ))}
               </Row>

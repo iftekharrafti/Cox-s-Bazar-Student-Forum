@@ -9,8 +9,6 @@ import HomeCountUp from "@/components/home/homeCountUp/HomeCountUp";
 import CarouselBanner from "@/components/home/carouselBanner/CarouselBanner";
 import { Col, Container, Row, Table } from "react-bootstrap";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
   const { data, loading } = useFetch("/expre/csfdu");
   return (

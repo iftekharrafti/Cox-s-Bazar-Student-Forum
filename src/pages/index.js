@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
@@ -7,8 +8,6 @@ import useFetch from "@/hooks/useFetch";
 import HomeAdvisor from "@/components/home/homeAdvisor/HomeAdvisor";
 import HomeCountUp from "@/components/home/homeCountUp/HomeCountUp";
 import CarouselBanner from "@/components/home/carouselBanner/CarouselBanner";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { data, loading } = useFetch("/home/csfdu");

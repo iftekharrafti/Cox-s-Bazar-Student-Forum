@@ -36,7 +36,7 @@ const HeaderMenu = () => {
   return (
     <Navbar collapseOnSelect expand="lg" className={Style.navbar}>
       <Container>
-        <Navbar.Brand className={Style.menuBrand} style={{ color: "#fff", fontFamily: 'Noto Sans Bengali' }}>
+        <Navbar.Brand className={Style.menuBrand} style={{ color: "#fff", fontFamily: 'Kalpurush' }}>
           {data?.admin?.name}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setExpanded(!expanded)} />

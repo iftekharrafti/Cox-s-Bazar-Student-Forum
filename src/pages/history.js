@@ -4,8 +4,6 @@ import useFetch from "@/hooks/useFetch";
 import { Col, Container, Row } from "react-bootstrap";
 import CardDesign from "@/components/cardDesign/CardDesign";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Advisor() {
   const { data, loading } = useFetch("/history/csfdu");
   return (

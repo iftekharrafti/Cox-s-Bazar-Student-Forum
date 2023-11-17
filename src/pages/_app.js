@@ -7,8 +7,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { ToastContainer } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
+import '../styles/fonts.css'
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {

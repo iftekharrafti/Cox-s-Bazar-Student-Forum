@@ -4,11 +4,7 @@ import useFetch from "@/hooks/useFetch";
 import { Container, Row } from "react-bootstrap";
 import CardDesign from "@/components/cardDesign/CardDesign";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Advisor() {
-
-  
   const { data, loading } = useFetch("/member/csfdu/Advisor");
   return (
     <>
@@ -31,7 +27,7 @@ export default function Advisor() {
             {/* Advisor Details */}
             <Container className="mt-4">
               <Row>
-                {data?.data.map((item) => (
+                {data?.data?.map((item) => (
                   <CardDesign key={item.serial} item={item} />
                 ))}
               </Row>

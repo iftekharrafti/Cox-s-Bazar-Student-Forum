@@ -37,7 +37,7 @@ const NoticeDetails = () => {
               ) : (
                 <div>
                   <h3
-                    style={{ fontSize: "30px", fontWeight: 600, fontFamily: 'Noto Sans Bengali' }}
+                    style={{ fontSize: "30px", fontWeight: 600, fontFamily: 'Kalpurush' }}
                     className="mb-4"
                   >
                     {notice?.title}
@@ -49,7 +49,7 @@ const NoticeDetails = () => {
                   />
                   <p
                     className="mt-4"
-                    style={{ lineHeight: 1.7, fontSize: "18px", fontWeight: 600, fontFamily: 'Noto Sans Bengali' }}
+                    style={{ lineHeight: 1.7, fontSize: "18px", fontWeight: 600, fontFamily: 'Kalpurush' }}
                   >
                     {notice?.text}
                   </p>

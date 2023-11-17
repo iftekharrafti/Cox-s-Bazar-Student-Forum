@@ -9,8 +9,6 @@ import { useState } from "react";
 import { BASE_URL } from "@/utils/api";
 import { toast } from "react-toastify";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Advisor() {
   const [isValid, setIsValid] = useState(true);
   const [loadingBtn, setLoadingBtn] = useState(false);

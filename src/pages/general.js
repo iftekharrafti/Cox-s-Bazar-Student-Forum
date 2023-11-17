@@ -6,8 +6,6 @@ import CardDesign from "@/components/cardDesign/CardDesign";
 import { useState } from "react";
 import Pagination from "@/components/pagination/Pagination";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [coursesPerPage] = useState(15);
@@ -39,7 +37,7 @@ export default function Home() {
             {/* Advisor Details */}
             <Container className="mt-4">
               <Row>
-                {data?.data.map((item) => (
+                {data?.data?.map((item) => (
                   <CardDesign key={item.serial} item={item} />
                 ))}
               </Row>

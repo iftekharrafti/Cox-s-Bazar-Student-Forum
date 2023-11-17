@@ -10,8 +10,6 @@ import CarouselBanner from "@/components/home/carouselBanner/CarouselBanner";
 import CardDesign from "@/components/cardDesign/CardDesign";
 import { Container, Row } from "react-bootstrap";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Senior() {
   const { data, loading } = useFetch("/member/csfdu/Senior");
   return (
@@ -35,7 +33,7 @@ export default function Senior() {
             {/* Advisor Details */}
             <Container className="mt-4">
               <Row>
-                {data?.data.map((item) => (
+                {data?.data?.map((item) => (
                   <CardDesign key={item.serial} item={item} />
                 ))}
               </Row>
