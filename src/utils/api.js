@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "https://amaderthikana.com/api";
+export const BASE_URL = "https://laravel.amaderthikana.com/api";
 
 export const fetchDataFromApi = async (url, params) => {
   try {
